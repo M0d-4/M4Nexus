@@ -90,8 +90,8 @@ endif
 # commands
 
 ifneq ($(findstring s,$(filter-out --%,$(MAKEFLAGS))),)
-  quiet=silent_
-  tools_silent=s
+#  quiet=silent_
+#  tools_silent=s
 endif
 
 export quiet Q KBUILD_VERBOSE
@@ -385,8 +385,8 @@ READELF		= llvm-readelf
 OBJSIZE		= llvm-size
 STRIP		= llvm-strip
 else
-REAL_CC		= $(CROSS_COMPILE)gcc
-LD		= $(CROSS_COMPILE)ld
+CC		= clang
+LD		= ld.lld
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
 OBJCOPY		= $(CROSS_COMPILE)objcopy
