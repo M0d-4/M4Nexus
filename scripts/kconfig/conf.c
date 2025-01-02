@@ -593,7 +593,7 @@ int main(int ac, char **av)
 			exit(1);
 		}
 		name = getenv("KCONFIG_VARIANT");
-		printf("KCONFIG_VARIANT(%s)\n", name);
+		//printf("KCONFIG_VARIANT(%s)\n", name);
 		if (name) {
 			if (conf_read_simple(name, S_DEF_USER, false)) {
 				fprintf(stderr,
@@ -606,7 +606,7 @@ int main(int ac, char **av)
 		}
 
 		name = getenv("KCONFIG_DEBUG");
-		printf("KCONFIG_DEBUG(%s)\n", name);
+		//printf("KCONFIG_DEBUG(%s)\n", name);
 		if (name) {
 			if (conf_read_simple(name, S_DEF_USER, false)) {
 				fprintf(stderr,
