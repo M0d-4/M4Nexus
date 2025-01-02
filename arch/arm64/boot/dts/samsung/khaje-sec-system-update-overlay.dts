@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -25,3 +26,28 @@
         dtbo-version = <1>;
 };
 
+=======
+/dts-v1/;
+
+/ {
+	dtbo-version = <0x1>;
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			gpio_keys {
+
+				vol_up {
+					debounce-interval = <0xe>;
+				};
+			};
+		};
+	};
+
+	__fixups__ {
+		soc = "/fragment@0:target:0";
+	};
+};
+>>>>>>> 0f7762b5a292 (arch: Import OEM Changes)
