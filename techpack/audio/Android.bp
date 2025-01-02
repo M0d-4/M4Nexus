@@ -8,7 +8,6 @@ gensrcs {
     ],
     output_extension: "h",
 }
-
 cc_library_headers {
     name: "qcom_audio_kernel_headers",
     generated_headers: ["qcom-audio-kernel-includes"],
