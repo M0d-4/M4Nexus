@@ -1,24 +1,17 @@
 config SEC_A23_PROJECT
-<<<<<<< HEAD
 	depends on ARCH_BENGAL
-=======
->>>>>>> 0f7762b5a292 (arch: Import OEM Changes)
 	default n
 	bool "Samsung A23 Project"
 	help
 	  Support for Samsung A23 Project
 
 config MACH_A23_EUR_OPEN
-<<<<<<< HEAD
 	depends on SEC_A23_PROJECT
-=======
->>>>>>> 0f7762b5a292 (arch: Import OEM Changes)
 	default n
 	bool "Samsung A23 EUR OPEN"
 	help
 	  Support for Samsung A23 EUR OPEN device.
 
-<<<<<<< HEAD
 config MACH_A23_KOR_SINGLE
 	depends on SEC_A23_PROJECT
 	default n
@@ -32,5 +25,3 @@ config MACH_A23_LTN_OPEN
 	bool "Samsung A23 LTN OPEN"
 	help
 	  Support for Samsung A23 LTN OPEN device.
-=======
->>>>>>> 0f7762b5a292 (arch: Import OEM Changes)
