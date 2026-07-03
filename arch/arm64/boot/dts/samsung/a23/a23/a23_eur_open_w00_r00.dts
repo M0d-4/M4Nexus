@@ -638,6 +638,7 @@
  */
 
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/iio/qcom,spmi-vadc.h>
 /* #include "../../../vendor/qcom/khaje-idp-nopmi.dtsi" */   /* From ap_qcom_sm6225.py - path broken after flattening into this file */
 
 
