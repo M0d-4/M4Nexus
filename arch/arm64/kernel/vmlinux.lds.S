@@ -237,6 +237,10 @@ SECTIONS
 
 	BSS_SECTION(0, 0, 0)
 
+	.bss.rtic : {
+		RTIC_BSS
+	}
+
 	. = ALIGN(PAGE_SIZE);
 	idmap_pg_dir = .;
 	. += IDMAP_DIR_SIZE;
@@ -260,10 +264,6 @@ SECTIONS
 	STABS_DEBUG
 
 	HEAD_SYMBOLS
-
-	.bss : {			/* bss segment		*/
-         RTIC_BSS
-	}
 }
 
 /*
