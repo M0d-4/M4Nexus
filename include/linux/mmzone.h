@@ -315,6 +315,8 @@ enum {
 	LRU_GEN_FILE,
 };
 
+#define ANON_AND_FILE (LRU_GEN_FILE + 1)
+
 enum {
 	LRU_GEN_CORE,
 	LRU_GEN_MM_WALK,
