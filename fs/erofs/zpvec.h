@@ -106,20 +106,15 @@ static inline void z_erofs_pagevec_ctor_init(struct z_erofs_pagevec_ctor *ctor,
 }
 
 static inline bool
-z_erofs_pagevec_ctor_enqueue(struct z_erofs_pagevec_ctor *ctor,
-			     struct page *page,
-			     enum z_erofs_page_type type,
-			     bool pvec_safereuse)
+z_erofs_pagevec_enqueue(struct z_erofs_pagevec_ctor *ctor,
+			 struct page *page,
+			 enum z_erofs_page_type type,
+			 bool *occupied)
 {
-	if (!ctor->next) {
-		/* some pages cannot be reused as pvec safely without I/O */
-		if (type == Z_EROFS_PAGE_TYPE_EXCLUSIVE && !pvec_safereuse)
-			type = Z_EROFS_VLE_PAGE_TYPE_TAIL_SHARED;
-
-		if (type != Z_EROFS_PAGE_TYPE_EXCLUSIVE &&
-		    ctor->index + 1 == ctor->nr)
-			return false;
-	}
+	*occupied = false;
+	if (!ctor->next && type != Z_EROFS_PAGE_TYPE_EXCLUSIVE &&
+	    ctor->index + 1 == ctor->nr)
+		return false;
 
 	if (ctor->index >= ctor->nr)
 		z_erofs_pagevec_ctor_pagedown(ctor, false);
@@ -131,6 +126,7 @@ z_erofs_pagevec_ctor_enqueue(struct z_erofs_pagevec_ctor *ctor,
 	/* should remind that collector->next never equal to 1, 2 */
 	if (type == (uintptr_t)ctor->next) {
 		ctor->next = page;
+		*occupied = true;
 	}
 	ctor->pages[ctor->index++] = tagptr_fold(erofs_vtptr_t, page, type);
 	return true;
@@ -159,4 +155,3 @@ z_erofs_pagevec_dequeue(struct z_erofs_pagevec_ctor *ctor,
 	return tagptr_unfold_ptr(t);
 }
 #endif
-
