@@ -82,6 +82,7 @@ static struct em_perf_domain *em_create_pd(cpumask_t *span, int nr_states,
 						struct em_data_callback *cb)
 {
 	unsigned long power, freq, prev_freq = 0, prev_cost = ULONG_MAX;
+	unsigned long opp_eff, prev_opp_eff = ULONG_MAX;
 	int i, ret, cpu = cpumask_first(span);
 	struct em_cap_state *table;
 	struct em_perf_domain *pd;
