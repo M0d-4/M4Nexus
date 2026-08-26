@@ -2288,14 +2288,6 @@ int ext4_xattr_ibody_set(handle_t *handle, struct inode *inode,
 	if (!EXT4_INODE_HAS_XATTR_SPACE(inode))
 		return -ENOSPC;
 
-static int ext4_xattr_ibody_set(handle_t *handle, struct inode *inode,
-				struct ext4_xattr_info *i,
-				struct ext4_xattr_ibody_find *is)
-{
-	struct ext4_xattr_ibody_header *header;
-	struct ext4_xattr_search *s = &is->s;
-	int error;
-
 	/* @fs.sec -- 27aa4ade7b90e77a75b0f821924eaac228cfdd43 -- */
 	if (EXT4_I(inode)->i_extra_isize == 0 ||
 			(void *) EXT4_XATTR_NEXT(s->first) >= s->end)
@@ -3231,4 +3223,3 @@ void ext4_xattr_destroy_cache(struct mb_cache *cache)
 	if (cache)
 		mb_cache_destroy(cache);
 }
-
