@@ -43,6 +43,8 @@
 #include <linux/mmu_notifier.h>
 #include <linux/cred.h>
 #include <linux/nmi.h>
+#include <linux/psi.h>
+#include <linux/show_mem_notifier.h>
 
 #include <asm/tlb.h>
 #include "internal.h"
@@ -605,7 +607,7 @@ static int dump_task(struct task_struct *p, void *arg)
  * State information includes task's pid, uid, tgid, vm size, rss,
  * pgtables_bytes, swapents, oom_score_adj value, and name.
  */
-static void dump_tasks(struct oom_control *oc)
+static void oom_dump_tasks(struct oom_control *oc)
 {
 	pr_info("Tasks state (memory values in pages):\n");
 	pr_info("[  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name\n");
@@ -649,7 +651,7 @@ static void dump_header(struct oom_control *oc, struct task_struct *p)
 	}
 
 	if (sysctl_oom_dump_tasks)
-		dump_tasks(oc);
+		oom_dump_tasks(oc);
 }
 
 /*
