@@ -127,6 +127,8 @@ enum {
 	FUSE_I_SIZE_UNSTABLE,
 	/* Bad inode */
 	FUSE_I_BAD,
+	/* Force next getattr to bypass the attribute cache */
+	FUSE_I_ATTR_FORCE_SYNC,
 };
 
 struct fuse_conn;
