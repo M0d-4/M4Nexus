@@ -263,6 +263,15 @@ extern atomic_long_t tcp_memory_allocated;
 extern int sysctl_tcp_delack_seg;
 extern int sysctl_tcp_use_userconfig;
 
+/* proc handlers for the sysctl entries above, defined in tcp_timer.c */
+extern int tcp_proc_delayed_ack_control(struct ctl_table *table, int write,
+					 void __user *buffer, size_t *length,
+					 loff_t *ppos);
+extern int tcp_use_userconfig_sysctl_handler(struct ctl_table *table,
+					      int write,
+					      void __user *buffer,
+					      size_t *length, loff_t *ppos);
+
 extern struct percpu_counter tcp_sockets_allocated;
 extern unsigned long tcp_memory_pressure;
 
