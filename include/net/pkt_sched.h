@@ -159,4 +159,7 @@ struct tc_etf_qopt_offload {
 	s32 queue;
 };
 
+extern int tc_qdisc_flow_control(struct net_device *dev, u32 tcm_handle,
+				  int enable_flow);
+
 #endif
